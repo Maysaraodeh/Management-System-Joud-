@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" type="text/css" th:href="@{../css/AdminLTE.min.css}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.css"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<style>
+
+.navbar-brand {
+    position: absolute;
+    padding: 20px;
+}
+#top {
+	background: #fff;
+	padding: 10px 0 0; 
+	color: #000;
+	border-bottom: 1px solid #ddd;
+	}
+#navTabs {  
+	font-size: 20px;
+    margin-top: 10px;
+    color:#fff}
+    
+#navCollapseBtn{
+    margin-top: 10px;
+    margin-right: 10px;
+    background-color: #00c0ef;
+    }
+    
+</style>
+
+<body>
+  <nav class="navbar navbar-inverse" style="height: 70px; background-color: #3c8dbc;
+    border-color: #ffffff;">
+    <div class="container-fluid">
+      <div class="navbar-header" style="height: 70px;">
+        <button type="button" id="navCollapseBtn" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#"><img style="width: 500%; margin-top: -36px; position: absolute; margin-left: 80px;" src="../images/testLogo.png"></a>
+      </div>
+      
+      <div class="collapse navbar-collapse" id="myNavbar" style="background-color: #3c8dbc; border-color: #3c8dbc;">
+      
+      <ul class="nav navbar-nav navbar-right">
+                            <li><a id="navTabs" class="page-scroll" href="body">Home</a></li>
+                            <li><a id="navTabs" class="page-scroll" href="#about-section">About</a></li>
+                            <li><a id="navTabs" style="color: #3c8dbc;" class="page-scroll" href="#contact-section"><form action="#" th:action="@{/logout}" method="post">
+				<button  type="submit" value="Logout">Logout</button>
+			</form></a></li>
+                        </ul>
+      
+
+      </div>
+    </div>
+  
+  </nav>
+
+
+<section class="content" style="margin-top:80px;padding:30px;">
+  <div class="row">
+    <div class="col-lg-3 col-xs-6">
+      <!-- small box -->
+      <div class="small-box bg-aqua">
+        <div class="inner">
+          <h3>150</h3>
+
+          <h2>Orders</h2>
+        </div>
+        <div class="icon">
+          <i class="ion ion-bag"></i>
+        </div>
+        <a href="/products" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-3 col-xs-6">
+      <!-- small box -->
+      <div class="small-box bg-green">
+        <div class="inner">
+          <h3>53</h3>
+
+          <h2>Customers</h2>
+        </div>
+        <div class="icon">
+          <i class="ion-ios-people"></i>
+        </div>
+        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+  
+    <!-- ./col -->
+    <div class="col-lg-3 col-xs-6">
+      <!-- small box -->
+      <div class="small-box bg-yellow">
+        <div class="inner">
+          <h3>44</h3>
+
+          <h2>Workers</h2>
+        </div>
+        <div class="icon">
+          <i class="fa fa-users" aria-hidden="true"></i>
+        </div>
+        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-3 col-xs-6">
+      <!-- small box -->
+      <div class="small-box bg-red">
+        <div class="inner">
+          <h3>65</h3>
+
+          <h2>Reports</h2>
+        </div>
+        <div class="icon">
+          <i class="ion ion-pie-graph"></i>
+        </div>
+        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+    </div>
+    
+    <!-- ./col -->
+</section>
+
+
+
+
+      </body>
+      </html>

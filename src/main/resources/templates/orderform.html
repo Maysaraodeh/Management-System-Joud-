@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+ <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+  
+  <script>
+  $(document).ready(function() {
+    $("#datepicker1").datepicker();
+    $("#datepicker2").datepicker();
+    $("#datepicker3").datepicker();
+  });
+  
+  $(document).ready(function() {
+  $('.input-daterange').each(function() {
+	    $(this).datepicker('clearDates');
+	});
+  });
+  </script>
+  </head>
+
+
+
+<body>
+<div class="container">
+	<div class="row">
+		    <form class="form-horizontal">
+<fieldset>
+
+<!-- Form Name -->
+<legend>New Order</legend>
+<div class="container">
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinputname">Order Name</label>  
+  <div class="col-md-6">
+  <input id="textinputname" name="textinputname" type="text" placeholder="" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinputname">Customer Name</label>  
+  <div class="col-md-6">
+  <input id="textinputname" name="textinputname" type="text" placeholder="" class="form-control input-md" required="">
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinputmobile">Order Date</label>  
+  <div class="col-md-6">
+  <form>
+  <input id="datepicker1" name="textinputmobile" type="text" placeholder="" class="form-control input-md">
+    </form>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinputmobilealt">Delivery Date</label>  
+  <div class="col-md-6">
+	<div class="input-group input-daterange">
+    <input type="text" class="form-control" value="2012-04-05" id="datepicker3">
+    <div class="input-group-addon">to</div>
+    <input type="text" class="form-control" value="2012-04-19">
+</div> 
+    </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinputmobilealt">Rent or Sell</label>  
+  <div class="col-md-6">
+  <input id="textinputmobilealt" name="textinputmobilealt" type="text" placeholder="" class="form-control input-md">
+    
+  </div>
+</div>
+
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinputmobilealt">Worker Name</label>  
+  <div class="col-md-6">
+  <input id="textinputmobilealt" name="textinputmobilealt" type="text" placeholder="" class="form-control input-md">  
+  </div>
+</div>
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="singlebuttonsubmit"></label>
+  <div class="col-md-6">
+    <button id="singlebuttonsubmit" name="singlebuttonsubmit" class="btn btn-primary">Submit</button>
+  </div>
+</div>
+
+
+</div>
+</fieldset>
+</form>
+	</div>
+</div>
+</body>
+</html>
