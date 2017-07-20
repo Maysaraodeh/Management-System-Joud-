@@ -21,7 +21,7 @@ import com.ensat.services.UserService;
 
 
 @Controller
-public class LoginController {
+public class LoginAndRegistrationController {
 	
 	@Autowired
 	private UserService userService;
@@ -56,7 +56,7 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value = "/addCustomer", method = RequestMethod.POST)
-	public ModelAndView createNewUser(@Valid Customer customer, BindingResult bindingResult) {
+	public ModelAndView createNewCustomer(@Valid Customer customer, BindingResult bindingResult) {
 		ModelAndView modelAndView = new ModelAndView();
 		Customer customerExists = customerService.findCustomerByEmail(customer.getEmail());
 		if (customerExists != null) {
