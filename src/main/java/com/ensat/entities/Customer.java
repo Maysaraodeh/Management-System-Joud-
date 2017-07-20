@@ -28,7 +28,7 @@ public class Customer {
     private String phone;
     @NotEmpty(message = "*Please provide Customer's Address")
     private String address;
-    private Date regestraionDate;
+    private String regestraionDate;
 	public Integer getId() {
 		return id;
 	}
@@ -59,10 +59,10 @@ public class Customer {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public Date getRegestraionDate() {
+	public String getRegestraionDate() {
 		return regestraionDate;
 	}
-	public void setRegestraionDate(Date regestraionDate) {
+	public void setRegestraionDate(String regestraionDate) {
 		this.regestraionDate = regestraionDate;
 	}
     

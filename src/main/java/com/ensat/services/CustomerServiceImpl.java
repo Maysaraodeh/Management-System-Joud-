@@ -2,6 +2,7 @@ package com.ensat.services;
 
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 
@@ -30,8 +31,9 @@ public class CustomerServiceImpl implements CustomerService {
 		java.util.Date currentDate = calendar.getTime();
 
 		Date date = new Date(currentDate.getTime());
-		
-		customer.setRegestraionDate(date);
+		SimpleDateFormat ft = 
+			      new SimpleDateFormat ("E yyyy.MM.dd 'at' hh:mm:ss a zzz");
+		customer.setRegestraionDate(ft.format(date));
 		customerRepository.save(customer);
 	}
 
