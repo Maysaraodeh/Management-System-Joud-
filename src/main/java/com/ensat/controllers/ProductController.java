@@ -1,12 +1,11 @@
 package com.ensat.controllers;
 
 import com.ensat.entities.Product;
-import com.ensat.entities.Report;
+
 import com.ensat.services.ProductService;
 import com.ensat.services.ReportService;
 
-import java.math.BigDecimal;
-import java.util.List;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
