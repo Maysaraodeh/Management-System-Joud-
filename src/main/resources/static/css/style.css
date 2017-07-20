@@ -1,5 +1,5 @@
 /* Form */
-.form {
+#form {
   position: relative;
   z-index: 1;
   background: #FFFFFF;

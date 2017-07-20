@@ -20,23 +20,26 @@
 </style>
 
 <body>
+
+
   <div class="form" style="margin-top:100px;">
     <form autocomplete="off" action="#" th:action="@{/addCustomer}"
 					th:object="${customer}" method="post"
 					role="form" class="login-form">
 
       <img src="../images/logo.png" style="width: 100%;"/>
-      <input th:field="*{name}" type="text" placeholder="Name"/>
       <label th:if="${#fields.hasErrors('name')}" th:errors="*{name}" id="error"></label>
-      <input th:field="*{email}" type="email" placeholder="email"/>
+      <input th:field="*{name}" type="text" placeholder="Name"/>
       <label th:if="${#fields.hasErrors('email')}" th:errors="*{email}" id="error"></label>
-      <input th:field="*{phone}" type="text" placeholder="Phone"/>
+      <input th:field="*{email}" type="email" placeholder="email"/>
       <label th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" id="error"></label>
-      <input th:field="*{address}" type="text" placeholder="Address"/>
+      <input th:field="*{phone}" type="text" placeholder="Phone"/>
       <label th:if="${#fields.hasErrors('address')}" th:errors="*{address}" id="error"></label>
+      <input th:field="*{address}" type="text" placeholder="Address"/>
+      
 
       <button type="submit" style="font-size: 18px;"><i class="fa fa-user-plus" style="font-size:1.5em;" aria-hidden="true"></i>     Add Customer !</button>
-    <br><span th:utext="${successMessage}"></span>
+    <br><br><Strong><span style=" color: green;"  th:utext="${successMessage}"></i></span></Strong>
     </form>
   </div>
 </body>
