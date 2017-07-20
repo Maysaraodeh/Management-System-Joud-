@@ -11,8 +11,6 @@ public class IndexController {
 //        return "login";
 //    } dksckdcscnskc
 	
-	//tesr
-	
 	
 
 	
