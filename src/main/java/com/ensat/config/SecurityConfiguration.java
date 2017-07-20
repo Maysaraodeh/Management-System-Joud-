@@ -24,8 +24,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private DataSource dataSource;
 	
-	///test the repository github
-	
 	@Value("${spring.queries.users-query}")
 	private String usersQuery;
 	

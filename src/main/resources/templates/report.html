@@ -162,9 +162,9 @@
                     concrete
                 </td>
 
-                <td>
-                    300.00 nis
-                </td>
+                
+                    <td th:text="${report.price}"></td>
+                
             </tr>
 
             <tr class="item">
@@ -172,9 +172,9 @@
                     5LATA
                 </td>
 
-                <td>
-                    750.00 nis
-                </td>
+                
+                   <td th:text="${report.price}"></td>
+                
             </tr>
 
             <tr class="item last">
@@ -183,7 +183,9 @@
                 </td>
 
                 <td>
-                    100.00 nis
+                               <div th:with="result=${report.price}">
+  <span th:text="${result}"></span>
+</div>
                 </td>
             </tr>
 
@@ -194,8 +196,13 @@
                    
                 </td>
             </tr>
+               <div th:with="result=${report.id * report.id}">
+  <span th:text="${result}"></span>
+</div>
             <br><br><br><br>
         </table>
+        
+     
         
      
     </div>

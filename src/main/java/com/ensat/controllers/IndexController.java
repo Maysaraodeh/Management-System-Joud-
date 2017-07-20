@@ -12,9 +12,20 @@ public class IndexController {
 //    } dksckdcscnskc
 	
 	
-	@RequestMapping("/Report")
-	String report(){
-		return "Report";
+
+	
+	@RequestMapping("/addCustomer")
+	String addCustomer(){
+		return "AddCustomer";
 	}
+	
+	@RequestMapping("/addDriver")
+	String addDriver(){
+		return "AddDriver";
+	}
+	
+	
+	
+	
 
 }
