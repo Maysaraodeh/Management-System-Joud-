@@ -14,11 +14,6 @@ public class IndexController {
 	
 
 	
-	@RequestMapping("/addCustomer")
-	String addCustomer(){
-		return "AddCustomer";
-	}
-	
 	@RequestMapping("/addDriver")
 	String addDriver(){
 		return "AddDriver";

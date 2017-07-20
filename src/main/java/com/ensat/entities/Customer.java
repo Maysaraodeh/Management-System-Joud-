@@ -1,12 +1,15 @@
 package com.ensat.entities;
 
-import java.math.BigDecimal;
+import java.sql.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "customer")
@@ -16,12 +19,16 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-
+    @NotEmpty(message = "*Please provide Customer's Name")
     private String name;
+    @Email(message = "*Please provide a valid Email")
+    @NotEmpty(message = "*Please provide an email")
     private String email;
-    private BigDecimal phone;
+    @NotEmpty(message = "*Please provide Customer's Phone")
+    private String phone;
+    @NotEmpty(message = "*Please provide Customer's Address")
     private String address;
-    private String regestraionDate;
+    private Date regestraionDate;
 	public Integer getId() {
 		return id;
 	}
@@ -40,10 +47,10 @@ public class Customer {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public BigDecimal getPhone() {
+	public String getPhone() {
 		return phone;
 	}
-	public void setPhone(BigDecimal phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 	public String getAddress() {
@@ -52,10 +59,10 @@ public class Customer {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getRegestraionDate() {
+	public Date getRegestraionDate() {
 		return regestraionDate;
 	}
-	public void setRegestraionDate(String regestraionDate) {
+	public void setRegestraionDate(Date regestraionDate) {
 		this.regestraionDate = regestraionDate;
 	}
     

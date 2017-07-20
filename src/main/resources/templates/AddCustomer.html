@@ -1,24 +1,42 @@
-<!Doctype html>
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/registration.css}" />
   <link rel="stylesheet" href="../css/style.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
 </head>
 
-<html>
+<style>
+
+#error{
+	color:red;
+}
+
+
+</style>
+
 <body>
   <div class="form" style="margin-top:100px;">
-    <form class="login-form">
+    <form autocomplete="off" action="#" th:action="@{/addCustomer}"
+					th:object="${customer}" method="post"
+					role="form" class="login-form">
 
       <img src="../images/logo.png" style="width: 100%;"/>
-      <input type="text" placeholder="Name"/>
-      <input type="email" placeholder="email"/>
-      <input type="text" placeholder="Phone"/>
-      <input type="text" placeholder="Address"/>
+      <input th:field="*{name}" type="text" placeholder="Name"/>
+      <label th:if="${#fields.hasErrors('name')}" th:errors="*{name}" id="error"></label>
+      <input th:field="*{email}" type="email" placeholder="email"/>
+      <label th:if="${#fields.hasErrors('email')}" th:errors="*{email}" id="error"></label>
+      <input th:field="*{phone}" type="text" placeholder="Phone"/>
+      <label th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" id="error"></label>
+      <input th:field="*{address}" type="text" placeholder="Address"/>
+      <label th:if="${#fields.hasErrors('address')}" th:errors="*{address}" id="error"></label>
 
-      <button style="font-size: 18px;"><i class="fa fa-user-plus" style="font-size:1.5em;" aria-hidden="true"></i>     Add Customer !</button>
+      <button type="submit" style="font-size: 18px;"><i class="fa fa-user-plus" style="font-size:1.5em;" aria-hidden="true"></i>     Add Customer !</button>
+    <br><span th:utext="${successMessage}"></span>
     </form>
   </div>
 </body>
