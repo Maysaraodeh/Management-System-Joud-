@@ -1,7 +1,7 @@
 package com.ensat.controllers;
 
 import com.ensat.entities.Product;
-
+import com.ensat.services.CustomerService;
 import com.ensat.services.ProductService;
 import com.ensat.services.ReportService;
 
@@ -19,6 +19,7 @@ public class ProductController {
 
 	private ProductService productService;
 	private ReportService reportService;
+	private CustomerService customerService;
 
 	@Autowired
 	public void setProductService(ProductService productService) {
@@ -28,6 +29,11 @@ public class ProductController {
 	@Autowired
 	public void setReportService(ReportService reportService) {
 		this.reportService = reportService;
+	}
+	
+	@Autowired
+	public void setCustomerService(CustomerService customerService){
+		this.customerService = customerService;
 	}
 	
 	
@@ -42,6 +48,12 @@ public class ProductController {
 	public String listAllReports(Model model){
 		model.addAttribute("reports", reportService.listAllReports());
 		return "report";
+	}
+	
+	@RequestMapping(value ="/customers" , method = RequestMethod.GET)
+	public String listAllCustomers(Model model){
+		model.addAttribute("customers", customerService.listAllCustomers());
+		return "customers";
 	}
 
 	@RequestMapping(value = "/products", method = RequestMethod.GET)

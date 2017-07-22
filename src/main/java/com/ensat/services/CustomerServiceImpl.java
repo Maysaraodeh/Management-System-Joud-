@@ -23,6 +23,11 @@ public class CustomerServiceImpl implements CustomerService {
 		
 		return customerRepository.findByEmail(email);
 	}
+	
+	 @Override
+	    public Iterable<Customer> listAllCustomers() {
+	        return customerRepository.findAll();
+	    }
 
 	@Override
 	public void saveCustomer(Customer customer) {
