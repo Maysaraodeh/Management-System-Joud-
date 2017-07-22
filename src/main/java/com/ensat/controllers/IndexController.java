@@ -14,9 +14,9 @@ public class IndexController {
 	
 
 	
-	@RequestMapping("/addDriver")
-	String addDriver(){
-		return "AddDriver";
+	@RequestMapping("/orders")
+	String listAllOrders(){
+		return "orders";
 	}
 	
 	
