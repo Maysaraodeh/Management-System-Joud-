@@ -3,10 +3,11 @@ package com.ensat.controllers;
 import com.ensat.entities.Customer;
 import com.ensat.entities.Product;
 import com.ensat.services.CustomerService;
+import com.ensat.services.DriverService;
 import com.ensat.services.ProductService;
 import com.ensat.services.ReportService;
 
-
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class CrudController {
@@ -22,7 +24,7 @@ public class CrudController {
 	private ProductService productService;
 	private ReportService reportService;
 	private CustomerService customerService;
-
+	private DriverService driverService;
 	@Autowired
 	public void setProductService(ProductService productService) {
 		this.productService = productService;
@@ -36,6 +38,11 @@ public class CrudController {
 	@Autowired
 	public void setCustomerService(CustomerService customerService){
 		this.customerService = customerService;
+	}
+	
+	@Autowired
+	public void setDriverService(DriverService driverService){
+		this.driverService = driverService;
 	}
 	
 	
@@ -77,6 +84,13 @@ public class CrudController {
 		customerService.deleteCustomer(id);
 		return "redirect:/customers";
 	}
+	
+	@RequestMapping(value = "/drivers" , method = RequestMethod.GET )
+	public String listDriver(Model model) {
+		model.addAttribute("Drivers", driverService.listAllDrivers());
+		return "drivers";
+		
+	}
 
 	@RequestMapping(value = "/products", method = RequestMethod.GET)
 	public String list(Model model) {
@@ -116,5 +130,8 @@ public class CrudController {
 		productService.deleteProduct(id);
 		return "redirect:/products";
 	}
+	
+	
+	
 
 }

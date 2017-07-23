@@ -25,4 +25,11 @@ public class DriverServiceImpl implements DriverService {
 
 	}
 
+	@Override
+	public Iterable<Driver> listAllDrivers() {
+	
+		return driverRepository.findAll();
+	}
+	
+
 }
