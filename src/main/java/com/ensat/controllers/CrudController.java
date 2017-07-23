@@ -1,5 +1,6 @@
 package com.ensat.controllers;
 
+import com.ensat.entities.Customer;
 import com.ensat.entities.Product;
 import com.ensat.services.CustomerService;
 import com.ensat.services.ProductService;
@@ -13,9 +14,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class ProductController {
+public class CrudController {
 
 	private ProductService productService;
 	private ReportService reportService;
@@ -54,6 +56,26 @@ public class ProductController {
 	public String listAllCustomers(Model model){
 		model.addAttribute("customers", customerService.listAllCustomers());
 		return "customers";
+	}
+	
+	
+	@RequestMapping("customer/edit/{id}")
+	public String editCustomer(@PathVariable Integer id, Model model) {
+		model.addAttribute("customer", customerService.getCustomerById(id));
+		return "updatecustomer";
+	}
+	
+	
+	@RequestMapping(value = "/updateCustomer", method = RequestMethod.POST)
+	public String saveCustomer(Customer customer, @RequestParam Integer id) {
+		customerService.updateCustomer(customer , id);
+		return "redirect:/customers";
+	}
+	
+	@RequestMapping("customer/delete/{id}")
+	public String deleteCustomer(@PathVariable Integer id, Model model) {
+		customerService.deleteCustomer(id);
+		return "redirect:/customers";
 	}
 
 	@RequestMapping(value = "/products", method = RequestMethod.GET)

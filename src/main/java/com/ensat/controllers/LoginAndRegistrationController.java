@@ -8,6 +8,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -69,12 +70,14 @@ public class LoginAndRegistrationController {
 		} else {
 			customerService.saveCustomer(customer);
 			modelAndView.addObject("successMessage", "Customer has been Added");
+			modelAndView.addObject("redirectMessage", "Go to Customers page");
 			modelAndView.addObject("customer", new Customer());
 			modelAndView.setViewName("addCustomer");
 			
 		}
 		return modelAndView;
 	}
+	
 	
 	@RequestMapping(value="/addDriver", method = RequestMethod.GET)
 	public ModelAndView registerDriver(){
