@@ -4,24 +4,29 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.persistence.Version;
 import java.math.BigDecimal;
 
 @Entity
+@Table(name = "product")
 public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-
-    @Version
-    private Integer version;
-
-    private String productId;
-    private String name;
+	private String name;
+    private Integer quantity;
     private BigDecimal price;
     private String details;
 
+    public Integer getid() {
+  		return id;
+  	}
+
+  	public void setid(Integer id) {
+  		this.id = id;
+  	}
     public String getDetails() {
 		return details;
 	}
@@ -38,29 +43,14 @@ public class Product {
         this.name = name;
     }
 
-    public Integer getVersion() {
-        return version;
+    public Integer getQuantity() {
+        return quantity;
     }
 
-    public void setVersion(Integer version) {
-        this.version = version;
+    public void setQuantity(Integer Quantity) {
+    	quantity = Quantity;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getProductId() {
-        return productId;
-    }
-
-    public void setProductId(String productId) {
-        this.productId = productId;
-    }
 
     public BigDecimal getPrice() {
         return price;

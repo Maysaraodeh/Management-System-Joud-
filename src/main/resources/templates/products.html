@@ -1,43 +1,246 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head lang="en">
-
-
-    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
-     
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" type="text/css" th:href="@{../css/table.css}" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </head>
+<style>
+
+body {
+    font-family: arial;
+}
+
+table {
+    border: 1px solid #ccc;
+    width: 100%;
+    margin:0;
+    padding:0;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+table tr {
+    border: 1px solid #ddd;
+    padding: 5px;
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: center;
+}
+
+table th {
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+@media screen and (max-width: 600px) {
+    table {
+        border: 0;
+    }
+
+    table thead {
+        display: none;
+    }
+
+    table tr {
+        margin-bottom: 10px;
+        display: block;
+    }
+
+    table tr:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    table tr:before {
+        display: block;
+        border-bottom: 2px solid #ddd;
+    }
+
+    table td {
+        box-sizing: border-box;
+        display: block;
+        float: left;
+        clear: left;
+        width: 100%;
+        text-align: right;
+        font-size: 13px;
+        border-bottom: 1px dotted #ccc;
+    }
+
+    table td:last-child {
+        border-bottom: 0;
+    }
+
+    table td:before {
+        content: attr(data-label);
+        float: left;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+
+    #navlogo{
+          margin-left: 39px;
+    }
+}
+
+
+
+.navbar-brand {
+    position: absolute;
+    padding: 20px;
+}
+#top {
+	background: #fff;
+	padding: 10px 0 0;
+	color: #000;
+	border-bottom: 1px solid #ddd;
+	}
+#navTabs {
+	font-size: 20px;
+    margin-top: 10px;
+    color:#fff}
+
+#navCollapseBtn{
+    margin-top: 10px;
+    margin-right: 10px;
+    background-color: #00c0ef;
+    }
+
+
+    /*search*/
+
+
+#myInput {
+  background-image: url('../images/search-icon-png.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 14px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#myTable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+}
+
+#myTable th, #myTable td {
+  padding: 12px;
+}
+
+#myTable tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+  background-color: #f1f1f1;
+}
+
+</style>
+
 
 <body>
-<div>
-    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
-    <div th:if="${not #lists.isEmpty(products)}">
-        <h2>Product List</h2>
-        <table class="table table-striped">
-            <tr>
-                <th>Id</th>
-                <th>Product Id</th>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Details</th>
-                <th>View</th>
-                <th>Edit</th>
-                <th>Delete</th>
-            </tr>
-            <tr th:each="product : ${products}">
-                <td th:text="${product.id}"><a href="/product/${product.id}">Id</a></td>
-                <td th:text="${product.productId}">Product Id</td>
-                <td th:text="${product.name}">descirption</td>
-                <td th:text="${product.price}">price</td>
-                <td th:text ="${product.details}">Details</td>
-                <td><a th:href="${ '/product/' + product.id}">View</a></td>
-                <td><a th:href="${'/product/edit/' + product.id}">Edit</a></td>
-                <td><a th:href="${'/product/delete/' + product.id}">Delete</a></td>
-            </tr>
-        </table>
 
+  <nav class="navbar navbar-inverse" style="height: 70px; background-color: #3c8dbc;
+    border-color: #ffffff;">
+    <div class="container-fluid">
+      <div class="navbar-header" style="height: 68px;">
+        <button type="button" id="navCollapseBtn" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/AdminPage/"><img style="width: 500%; margin-top: -36px; position: absolute; margin-left: 39px;" src="../images/testLogo.png" id="navlogo"></a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="myNavbar" style="background-color: #3c8dbc; border-color: #3c8dbc;">
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a id="navTabs" class="page-scroll" href="body">Home</a></li>
+        <li><a id="navTabs" class="page-scroll" href="#about-section">About</a></li>
+        <li><a id="navTabs" class="page-scroll" href=""><form style="height:1px;" action="#" th:action="@{/logout}" method="post">
+				<button class="btn btn-primary" style="font-size: 20px;margin-top:-10px;"  type="submit" value="Logout">Logout</button>
+			</form></a></li>
+      </ul>
+
+
+      </div>
     </div>
+
+  </nav>
+
+  <div id="page-wrap">
+    <input type="text" id="myInput" onkeyup="searchTable()" placeholder="Search for Products" title="Type in a name">
+    <button style="background-color: rgb(75, 188, 60); color: rgb(255, 255, 255);  margin-bottom: 5px;"type="button" class="btn btn-secondary"> <a style="color: rgb(255, 255, 255);" href="/addproduct"> New +</a></button>
+  <table id="myTable">
+      <thead>
+          <tr>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Details</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+      </thead>
+      <tbody th:each="product : ${products}">
+          <tr>
+            <td data-label="Products Name" th:text="${product.name}">Ahmad saleem</td>
+            <td data-label="Quantity" th:text="${product.quantity}">ahmad@gmail.com</td>
+            <td data-label="Price" th:text="${product.price}">0598305432</td>
+            <td data-label="Details" th:text="${product.details}">arrabeh</td>
+            <td data-label="Edit">
+            <p data-placement="top" data-toggle="tooltip" title="Edit"><a th:href="${'product/edit/' + product.getid() }"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></a></p>
+            </td>
+            <td data-label="Delete">
+            <p data-placement="top" data-toggle="tooltip" title="delete"><a onclick="alert()" th:href="${'product/delete/' + product.getid() }"><button style="border-color: red;
+    background-color: red;" class="btn btn-primary btn-xs"  data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></a></p>
+            </td>
+          </tr>
+      </tbody>
+  </table>
 </div>
+<script>
+function searchTable() {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+
+
+function alert() {
+    alert("do want to delete ??");
+}
+</script>
 
 </body>
+
+
 </html>
