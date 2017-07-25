@@ -30,6 +30,38 @@ public class DriverServiceImpl implements DriverService {
 	
 		return driverRepository.findAll();
 	}
+
+	@Override
+	public void updateDriver(Driver driver,Integer id) {
+		Driver uDriver=driverRepository.findOne(id);
+		uDriver.setName(driver.getName());
+		uDriver.setAddress(driver.getAddress());
+		uDriver.setEmail(driver.getEmail());
+		uDriver.setPhone(driver.getPhone());
+		uDriver.setVehicleNo(driver.getVehicleNo());
+		uDriver.setIdentity(driver.getIdentity());
+		driverRepository.save(uDriver);
+		
+	}
+
+	@Override
+	public Driver findDriverById(Integer id) {
+		
+		return driverRepository.findOne(id);
+	}
+
+	@Override
+	public void deleteDriver(Integer id) {
+		
+		driverRepository.delete(id);
+		
+	}
+
+	@Override
+	public Integer findDriverIdByName(String name) {
+		Integer id = driverRepository.findDriverIdByName(name);
+		return id;
+	}
 	
 
 }

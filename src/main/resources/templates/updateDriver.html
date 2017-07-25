@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   
 </head>
@@ -21,14 +21,14 @@
 
 <body>
 
-  <div class="form">
-    <form autocomplete="off" action="#" th:action="@{/addCustomer}"
-					th:object="${customer}" method="post"
-					role="form" class="login-form" style="max-width:400px;">
+  <div class="form" style="margin-top:100px;">
+    <form autocomplete="off" action="#" th:action="@{/updateDriver}"
+					th:object="${driver}" method="post"
+					 class="login-form">
 
-      <a href="/AdminPage/"><img src="../images/logo.png" style="width: 100%;"/></a>
-       <label th:if="${#fields.hasErrors('identity')}" th:errors="*{identity}" id="error"></label>
-      <input th:field="*{identity}" type="text" placeholder="identityNo"/>
+      <img src="../../images/logo.png" style="width: 100%;"/>
+      <label th:if="${#fields.hasErrors('id')}" th:errors="*{id}" id="error"></label>
+      <input th:field="*{id}" type="text" placeholder="id" readonly>
       <label th:if="${#fields.hasErrors('name')}" th:errors="*{name}" id="error"></label>
       <input th:field="*{name}" type="text" placeholder="Name"/>
       <label th:if="${#fields.hasErrors('email')}" th:errors="*{email}" id="error"></label>
@@ -37,11 +37,11 @@
       <input th:field="*{phone}" type="text" placeholder="Phone"/>
       <label th:if="${#fields.hasErrors('address')}" th:errors="*{address}" id="error"></label>
       <input th:field="*{address}" type="text" placeholder="Address"/>
-      
+      <label th:if="${#fields.hasErrors('vehicleNo')}" th:errors="*{vehicleNo}" id="error"></label>
+      <input th:field="*{vehicleNo}" type="text" placeholder="VehicleNo"/>
 
-      <button type="submit" style="font-size: 18px;"><i class="fa fa-user-plus" style="font-size:1.5em;" aria-hidden="true"></i>     Add Customer !</button>
+      <button type="submit" style="font-size: 18px;"><i class="fa fa-pencil-square-o" style="font-size:1.5em;" aria-hidden="true"></i>   Update Customer</button>
     <br><br><Strong><span style=" color: green;"  th:utext="${successMessage}"></i></span></Strong>
-    <br><br><a href="/customers"><Strong><span style=" color: green;"  th:utext="${redirectMessage}"></i></span></Strong></a>
     </form>
   </div>
 </body>

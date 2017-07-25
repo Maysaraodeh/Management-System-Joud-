@@ -19,6 +19,9 @@ public class Customer {
 
 	@NotEmpty(message = "*Please provide Customer's Name")
 	private String name;
+	@NotEmpty(message = "*Please provide Customer's identity")
+	private String identity;
+	
 	@Email(message = "*Please provide a valid Email")
 	@NotEmpty(message = "*Please provide an email")
 	private String email;
@@ -75,5 +78,13 @@ public class Customer {
 	public void setRegestraionDate(String regestraionDate) {
 		this.regestraionDate = regestraionDate;
 	}
+	public String getIdentity() {
+		return identity;
+	}
+
+	public void setIdentity(String identity) {
+		this.identity = identity;
+	}
+
 
 }

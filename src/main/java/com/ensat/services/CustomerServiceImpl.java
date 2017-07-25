@@ -3,13 +3,15 @@ package com.ensat.services;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
-
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ensat.entities.Customer;
+import com.ensat.entities.Order;
 import com.ensat.repositories.CustomerRepository;
 
 @Service("customerService")
@@ -62,6 +64,7 @@ public class CustomerServiceImpl implements CustomerService {
 		c.setAddress(customer.getAddress());
 		c.setEmail(customer.getEmail());
 		c.setPhone(customer.getPhone());
+		c.setIdentity(customer.getIdentity());
 		customerRepository.save(c);
 		
 		
@@ -72,6 +75,22 @@ public class CustomerServiceImpl implements CustomerService {
 	public void deleteCustomer(Integer id) {
 		customerRepository.delete(id);
 		
+	}
+
+	@Override
+	public int getCustomerIdByIdentity(String identity) {
+		int id = customerRepository.findCustomerIdByIdentity(identity);
+		return id;
+	}
+
+	@Override
+	public Iterable<Customer> findCustomersWithOrder(List<Order> order) {
+		List<Customer> customer = new ArrayList<Customer>();
+		for(int i=0;i<order.size();i++){
+			customer.add(customerRepository.findOne(order.get(i).getCustomerId()));
+		}
+		
+		return customer;
 	}
 
 }

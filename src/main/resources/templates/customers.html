@@ -207,8 +207,8 @@ table th {
             <p data-placement="top" data-toggle="tooltip" title="Edit"><a th:href="${'/customer/edit/' + customer.id}"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></a></p>
             </td>
             <td data-label="Delete">
-            <p data-placement="top" data-toggle="tooltip" title="delete"><a th:href="${'/customer/delete/' + customer.id}"><button style="border-color: red;
-    background-color: red;" class="btn btn-primary btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></a></p>
+            <p data-placement="top" data-toggle="tooltip" title="delete"><a onclick="alert()" th:href="${'/customer/delete/' + customer.id}"><button style="border-color: red;
+    background-color: red;" class="btn btn-primary btn-xs"  data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></a></p>
             </td>
           </tr>
       </tbody>
@@ -232,7 +232,13 @@ function searchTable() {
     }
   }
 }
+
+
+function alert() {
+    alert("do want to delete ??");
+}
 </script>
+
 </body>
 
 

@@ -19,6 +19,9 @@ public class Driver {
 
 	@NotEmpty(message = "*Please provide Driver's Name")
 	private String name;
+	@NotEmpty(message = "*Please provide Driver's identity")
+	private String identity;
+	
 	@NotEmpty(message = "*Please provide Driver's email")
 	@Email(message = "*Please provide a valid Email")
 	private String email;
@@ -76,5 +79,13 @@ public class Driver {
 	public void setVehicleNo(String vehicleNo) {
 		this.vehicleNo = vehicleNo;
 	}
+	public String getIdentity() {
+		return identity;
+	}
+
+	public void setIdentity(String identity) {
+		this.identity = identity;
+	}
+
 
 }
