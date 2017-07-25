@@ -49,6 +49,11 @@ public class OrderInfoServiceImpl implements OrderInfoService {
 		orderInfoRepository.save(uOrderInfo);
 		
 	}
+
+	@Override
+	public OrderInfo getOrderInfoById(Integer id) {
+		return orderInfoRepository.findOne(id);
+	}
 	
 	
 	

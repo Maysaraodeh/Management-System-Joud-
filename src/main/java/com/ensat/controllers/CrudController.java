@@ -59,15 +59,15 @@ public class CrudController {
 		this.orderService = orderService;
 	}
 
-	@RequestMapping(value = "/reports/{orderId}", method = RequestMethod.GET)
-	public String listReportsByOrderId(Model model, @PathVariable Integer orderId) {
-		model.addAttribute("reports", reportService.getReportByOrderId(orderId));
-		return "report";
-	}
+//	@RequestMapping(value = "/reports/{orderId}", method = RequestMethod.GET)
+//	public String listReportsByOrderId(Model model, @PathVariable Integer orderId) {
+//		model.addAttribute("reports", reportService.getReportByOrderId(orderId));
+//		return "report";
+//	}
 
-	@RequestMapping(value = "/reports", method = RequestMethod.GET)
-	public String listAllReports(Model model) {
-		model.addAttribute("reports", reportService.listAllReports());
+	@RequestMapping(value = "/reports/{id}", method = RequestMethod.GET)
+	public String listAllReports(Model model,@PathVariable Integer id) {
+		model.addAttribute("orderinfo", orderInfoService.getOrderInfoById(id));
 		return "report";
 	}
 

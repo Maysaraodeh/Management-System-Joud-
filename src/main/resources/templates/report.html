@@ -87,7 +87,7 @@
 </head>
 
 <body>
-    <div class="invoice-box">
+    <div class="invoice-box" th:each="orderinfos : ${orderinfo}">
         <table cellpadding="0" cellspacing="0">
             <tr class="top">
                 <td colspan="2">
@@ -101,6 +101,8 @@
                                 Report #: 123<br>
                                 Created: January 1, 2017<br>
 
+							
+							Customer Name:<h1 th:text="${orderinfos.customerName}" ></h1>
                             </td>
                         </tr>
                     </table>
@@ -126,7 +128,7 @@
                 </td>
             </tr>
 	</table>
-	<table th:each="report : ${reports}">
+	<table >
             <tr class="heading">
                 <td>
                     Payment Method
@@ -148,59 +150,57 @@
             </tr>
 
             <tr class="heading">
-                <td>
-                    Item
+                 <td>
+                    product Name
                 </td>
-
+                 <td>
+                    Driver Name
+                </td>
+                 <td>
+                    Quantity
+                </td>
+                 <td>
+                   Order Date
+                </td>
+				 <td>
+                    Shipment Date
+                </td>
+                 <td>
+                    End Date
+                </td>
                 <td>
                     rent price
                 </td>
             </tr>
 
             <tr class="item">
-                <td>
+                <td th:text="${orderinfos.productName}">
                     concrete
                 </td>
+                <td th:text="${orderinfos.driverName}">
+                    concrete
+                </td>
+                <td th:text="${orderinfos.quantity}">
+                    concrete
+                </td>
+                <td th:text="${orderinfos.orderDate}">
+                    concrete
+                </td>
+                <td th:text="${orderinfos.shipmentDate}">
+                    concrete
+                </td>
+                <td th:text="${orderinfos.endDate}">
+                    concrete
+                </td>
+               
 
                 
-                    <td th:text="${report.price}"></td>
+                    <td>50</td>
                 
             </tr>
 
-            <tr class="item">
-                <td>
-                    5LATA
-                </td>
-
-                
-                   <td th:text="${report.price}"></td>
-                
-            </tr>
-
-            <tr class="item last">
-                <td>
-                    3MDAN
-                </td>
-
-                <td>
-                               <div th:with="result=${report.price}">
-  <span th:text="${result}"></span>
-</div>
-                </td>
-            </tr>
-
-            <tr class="total">
-                <td></td>
-
-                <td>
-                   
-                </td>
-            </tr>
-               <div th:with="result=${report.id * report.id}">
-  <span th:text="${result}"></span>
-</div>
-            <br><br><br><br>
-        </table>
+            
+              </table>
         
      
         

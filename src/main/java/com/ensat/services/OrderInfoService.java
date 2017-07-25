@@ -8,6 +8,6 @@ public interface OrderInfoService {
 	Iterable<OrderInfo> listAllOrdersInfo();
 	public void deleteOrderInfo(Integer id);
 	public void updateOrderInfo(OrderInfo orderInfo , Integer id);
-	
+	OrderInfo getOrderInfoById(Integer id);
 
 }
