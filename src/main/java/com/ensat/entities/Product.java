@@ -5,7 +5,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Version;
 import java.math.BigDecimal;
 
 @Entity
@@ -15,7 +14,7 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-	private String name;
+	private String productName;
     private Integer quantity;
     private BigDecimal price;
     private String details;
@@ -35,12 +34,12 @@ public class Product {
 		this.details = details;
 	}
 
-	public String getName() {
-        return name;
+	public String getProductName() {
+        return productName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
     public Integer getQuantity() {

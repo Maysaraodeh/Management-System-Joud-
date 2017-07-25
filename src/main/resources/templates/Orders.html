@@ -205,13 +205,13 @@ table th {
       </thead>
       <tbody>
           <tr th:each="order :${orders}">
-            <td th:text="${order.customerName}" data-label="Customer Name">Ahmad</td>
-            <td th:text="${order.driverName}" data-label="Driver Name">Saleem</td>
-            <td th:text="${order.productName}" data-label="Product">Concrete</td> 
-            <td th:text = "${order.quantity}"data-label="Quantity">2 tons</td>  
-            <td th:text="${order.orderDate}" data-label="Order Date">19/7/2017</td>
-            <td th:text="${order.shipmentDate}" data-label="Shipment Date">20/7/2017</td>
-            <td th:text="${order.endDate}" data-label="End Date">3/8/2017</td>
+            <td th:text="${order.customerName}" data-label="Customer Name"></td>
+            <td th:text="${order.driverName}" data-label="Driver Name"></td>
+            <td th:text="${order.productName}" data-label="Product"></td> 
+            <td th:text = "${order.quantity}"data-label="Quantity"></td>  
+            <td th:text="${order.orderDate}" data-label="Order Date"></td>
+            <td th:text="${order.shipmentDate}" data-label="Shipment Date"></td>
+            <td th:text="${order.endDate}" data-label="End Date"></td>
             <td data-label="Edit">
             <p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p>
             </td>

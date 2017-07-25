@@ -126,35 +126,37 @@ public class CrudController {
 		model.addAttribute("order", new Order());
 		model.addAttribute("driver", new Driver());
 		model.addAttribute("customer", new Customer());
+		model.addAttribute("product", new Product());
 		return "newOrder";
 
 	}
 
 	@RequestMapping(value = "newOrderSubmit", method = RequestMethod.POST)
-	public String newOrderSubmit(Customer customer, Order order, Driver driver) {
+	public String newOrderSubmit(Customer customer, Order order, Driver driver , Product product) {
 
 		Order newOrder = new Order();
 		OrderInfo orderInfo = new OrderInfo();
 		Customer orderInfoCustomer = customerService
 				.getCustomerById(customerService.getCustomerIdByIdentity(customer.getIdentity()));
+		Product orderInfoProduct = productService.getProductById(productService.getProductIdByName(product.getProductName()));
 		Driver orderInfoDriver = driverService.findDriverById(driverService.findDriverIdByName(driver.getName()));
 		orderInfo.setCustomerName(orderInfoCustomer.getName());
 		orderInfo.setDriverName(orderInfoDriver.getName());
 		orderInfo.setOrderDate(order.getOrderDate());
 		orderInfo.setEndDate(order.getEndDate());
 		orderInfo.setShipmentDate(order.getShipmentDate());
-		orderInfo.setProductName("5ra");
-		orderInfo.setQuantity(3);
-		orderInfo.setRentSell(1);
+		orderInfo.setProductName(orderInfoProduct.getProductName());
+		orderInfo.setQuantity(product.getQuantity());
+		orderInfo.setRentSell(order.getRentSell());
 
 		newOrder.setCustomerId(customerService.getCustomerIdByIdentity(customer.getIdentity()));
 		newOrder.setDriverId(driverService.findDriverIdByName(driver.getName()));
+		newOrder.setProductId(productService.getProductIdByName(product.getProductName()));
 		newOrder.setOrderDate(order.getOrderDate());
 		newOrder.setEndDate(order.getEndDate());
 		newOrder.setShipmentDate(order.getShipmentDate());
 		newOrder.setRentSell(order.getRentSell());
-		newOrder.setProductId(1);
-		newOrder.setQuantity(12);
+		newOrder.setQuantity(product.getQuantity());
 
 		orderService.saveOrder(newOrder);
 		orderInfoService.saveOrderInfo(orderInfo);
@@ -191,12 +193,6 @@ public class CrudController {
 		return "products";
 	}
 
-//	@RequestMapping("product/{id}")
-//	public String showProduct(@PathVariable Integer id, Model model) {
-//		model.addAttribute("product", productService.getProductById(id));
-//		return "productshow";
-//	}
-//
 	@RequestMapping("product/edit/{id}")
 	public String edit(@PathVariable Integer id, Model model) {
 		model.addAttribute("product", productService.getProductById(id));
@@ -214,7 +210,7 @@ public class CrudController {
 		productService.saveProduct(product);
 		return "redirect:/products";
 	}
-//
+
 	@RequestMapping("product/delete/{id}")
 	public String delete(@PathVariable Integer id) {
 		productService.deleteProduct(id);

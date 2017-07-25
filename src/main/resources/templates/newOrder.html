@@ -45,8 +45,8 @@
       <a href="/AdminPage/"><img src="../images/logo.png" style="width: 100%;"/></a>
       
       <input type="text" th:value="${customer.identity}" name="identity" placeholder="identity"/>
-      <!-- <input type="text" th:value="${product.name}" name="name"/>
-      <input type="text" th:value="${product.quantity}" name="quantity"/> -->
+      <input type="text" th:value="${product.productName}" name="productName" placeholder="product Name"/>
+      <input type="text" th:value="${product.quantity}" name="quantity" placeholder="quantity"/>
       <input type="text" th:value="${order.rentSell}" name="rentSell" placeholder="rent or Sell?"/>
       <input type="text" th:value="${order.orderDate}" name="orderDate" id="datepicker3" placeholder="orderDate"/>
       <input type="text" th:value="${order.endDate}" name="endDate" id="datepicker2" placeholder="endDate"/>
