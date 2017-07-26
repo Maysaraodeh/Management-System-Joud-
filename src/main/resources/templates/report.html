@@ -87,6 +87,7 @@
 </head>
 
 <body>
+
     <div class="invoice-box" th:each="orderinfos : ${orderinfo}">
         <table cellpadding="0" cellspacing="0">
             <tr class="top">
@@ -109,21 +110,7 @@
                 </td>
             </tr>
 
-            <tr class="information">
-                <td colspan="2">
-                    <table>
-                        <tr>
-                            <td>
-                                Joud, Inc.<br>
-                                12345 test<br>
-                                israel, test 12345
-                            </td>
-
-                            <td>
-                                Joud<br>
-                                Joud@example.com
-                            </td>
-                        </tr>
+       
                     </table>
                 </td>
             </tr>
@@ -194,9 +181,31 @@
                 </td>
                     <td>1000</td>
             </tr>
+            
 
+ 
+     
             
               </table>
+              <table><br><br><br><br>
+               <tr class="information">
+                <td colspan="2">
+                    <table>
+                        <tr>
+                            <td>
+                                Joud, Inc.<br>
+                                12345 test<br>
+                                israel, test 12345
+                            </td>
+
+                            <td>
+                                Joud<br>
+                                Joud@example.com
+                            </td>
+                        </tr>
+ 
+ 
+ </table>
         <br><br>
         <ion-footer-bar></ion-footer-bar>
         
