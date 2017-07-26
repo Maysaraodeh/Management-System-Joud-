@@ -24,8 +24,8 @@
 					role="form" class="login-form">
 
       <img src="../images/logo.png" style="width: 100%;"/>
-       <label th:if="${#fields.hasErrors('identity')}" th:errors="*{identity}" id="error"></label>
-      <input th:field="*{identity}" type="text" placeholder="identityNo"/>
+       <label th:if="${#fields.hasErrors('driverIdentity')}" th:errors="*{driverIdentity}" id="error"></label>
+      <input th:field="*{driverIdentity}" type="text" placeholder="identityNo"/>
       <label th:if="${#fields.hasErrors('name')}" th:errors="*{name}" id="error"></label>
       <input th:field="*{name}" type="text" placeholder="Name"/>
   	  <label th:if="${#fields.hasErrors('email')}" th:errors="*{email}" id="error"></label>

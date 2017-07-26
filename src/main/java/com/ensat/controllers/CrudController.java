@@ -198,6 +198,11 @@ public class CrudController {
 		model.addAttribute("product", productService.getProductById(id));
 		return "productform";
 	}
+	@RequestMapping(value = "updateproduct", method = RequestMethod.POST)
+	public String updateProduct(Product product, @RequestParam Integer id){
+		productService.updateProduct(product,id);
+		return"redirect:/products";
+	}
 
 	@RequestMapping("/addproduct")
 	public String newProduct(Model model) {

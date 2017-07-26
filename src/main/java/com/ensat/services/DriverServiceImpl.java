@@ -39,7 +39,7 @@ public class DriverServiceImpl implements DriverService {
 		uDriver.setEmail(driver.getEmail());
 		uDriver.setPhone(driver.getPhone());
 		uDriver.setVehicleNo(driver.getVehicleNo());
-		uDriver.setIdentity(driver.getIdentity());
+		uDriver.setDriverIdentity(driver.getIdentity());
 		driverRepository.save(uDriver);
 		
 	}

@@ -20,7 +20,7 @@ public class Driver {
 	@NotEmpty(message = "*Please provide Driver's Name")
 	private String name;
 	@NotEmpty(message = "*Please provide Driver's identity")
-	private String identity;
+	private String driverIdentity;
 	
 	@NotEmpty(message = "*Please provide Driver's email")
 	@Email(message = "*Please provide a valid Email")
@@ -80,11 +80,11 @@ public class Driver {
 		this.vehicleNo = vehicleNo;
 	}
 	public String getIdentity() {
-		return identity;
+		return driverIdentity;
 	}
 
-	public void setIdentity(String identity) {
-		this.identity = identity;
+	public void setDriverIdentity(String driverIdentity) {
+		this.driverIdentity = driverIdentity;
 	}
 
 

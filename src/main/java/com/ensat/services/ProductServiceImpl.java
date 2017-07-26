@@ -1,5 +1,6 @@
 package com.ensat.services;
 
+
 import com.ensat.entities.Product;
 import com.ensat.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,16 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public int getProductIdByName(String productName) {	
 		return productRepository.findProductIdByName(productName);
+	}
+
+	@Override
+	public void updateProduct(Product product ,Integer id) {
+		Product uProduct= productRepository.findOne(id);
+		uProduct.setDetails(product.getDetails());
+		uProduct.setPrice(product.getPrice());
+		uProduct.setProductName(product.getProductName());
+		uProduct.setQuantity(product.getQuantity());
+		productRepository.save(uProduct);
 	}
 
 }
