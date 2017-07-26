@@ -79,7 +79,7 @@ public class Driver {
 	public void setVehicleNo(String vehicleNo) {
 		this.vehicleNo = vehicleNo;
 	}
-	public String getIdentity() {
+	public String getDriverIdentity() {
 		return driverIdentity;
 	}
 

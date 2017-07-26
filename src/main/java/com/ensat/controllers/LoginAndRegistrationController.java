@@ -133,6 +133,7 @@ public class LoginAndRegistrationController {
 	public ModelAndView home(){
 		ModelAndView modelAndView = new ModelAndView();
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		@SuppressWarnings("unused")
 		User user = userService.findUserByEmail(auth.getName());
 		modelAndView.setViewName("AdminPage");
 		return modelAndView;

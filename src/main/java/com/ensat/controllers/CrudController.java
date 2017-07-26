@@ -10,7 +10,7 @@ import com.ensat.services.DriverService;
 import com.ensat.services.OrderInfoService;
 import com.ensat.services.OrderService;
 import com.ensat.services.ProductService;
-import com.ensat.services.ReportService;
+//import com.ensat.services.ReportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class CrudController {
 
 	private ProductService productService;
-	private ReportService reportService;
+	//private ReportService reportService;
 	private CustomerService customerService;
 	private DriverService driverService;
 	private OrderService orderService;
@@ -39,10 +39,10 @@ public class CrudController {
 		this.productService = productService;
 	}
 
-	@Autowired
-	public void setReportService(ReportService reportService) {
-		this.reportService = reportService;
-	}
+//	@Autowired
+//	public void setReportService(ReportService reportService) {
+//		this.reportService = reportService;
+//	}
 
 	@Autowired
 	public void setCustomerService(CustomerService customerService) {

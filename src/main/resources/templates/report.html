@@ -94,16 +94,16 @@
                     <table>
                         <tr>
                             <td class="title">
-                                <img src="../images/logo.png" style="width:100%; max-width:300px;">
+                                <img src="../images/logo.png" style="width:100%; max-width:300px;margin-top: -128px;">
                             </td>
 
-                            <td>
-                                Report #: 123<br>
+                            <div style="text-align: -webkit-right;">
+                               <p th:text="${orderinfos.id}"> Report # : </p><br>
                                 Created: January 1, 2017<br>
 
 							
 							Customer Name:<h1 th:text="${orderinfos.customerName}" ></h1>
-                            </td>
+                            </div>
                         </tr>
                     </table>
                 </td>
@@ -173,11 +173,11 @@
                 </td>
             </tr>
 
-            <tr class="item">
+            <tr class="item" style="text-align: -webkit-center;" >
                 <td th:text="${orderinfos.productName}">
                     concrete
                 </td>
-                <td th:text="${orderinfos.driverName}">
+                <td th:text="${orderinfos.driverName}" style="text-align: -webkit-center;">
                     concrete
                 </td>
                 <td th:text="${orderinfos.quantity}">
@@ -192,15 +192,13 @@
                 <td th:text="${orderinfos.endDate}">
                     concrete
                 </td>
-               
-
-                
-                    <td>50</td>
-                
+                    <td>1000</td>
             </tr>
 
             
               </table>
+        <br><br>
+        <ion-footer-bar></ion-footer-bar>
         
      
         
