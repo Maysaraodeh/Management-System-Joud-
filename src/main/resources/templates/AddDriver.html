@@ -18,12 +18,12 @@
 </style>
 
 <body>
-  <div class="form" style="margin-top:100px;">
+  <div class="form" style="">
         <form autocomplete="off" action="#" th:action="@{/addDriver}"
 					th:object="${driver}" method="post"
-					role="form" class="login-form">
+					role="form" class="login-form" style="max-width:400px;">
 
-      <img src="../images/logo.png" style="width: 100%;"/>
+      <a href="/AdminPage/"><img src="../images/logo.png" style="width: 100%;"/></a>
        <label th:if="${#fields.hasErrors('driverIdentity')}" th:errors="*{driverIdentity}" id="error"></label>
       <input th:field="*{driverIdentity}" type="text" placeholder="identityNo"/>
       <label th:if="${#fields.hasErrors('name')}" th:errors="*{name}" id="error"></label>
