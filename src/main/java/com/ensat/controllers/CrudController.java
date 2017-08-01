@@ -10,14 +10,19 @@ import com.ensat.services.DriverService;
 import com.ensat.services.OrderInfoService;
 import com.ensat.services.OrderService;
 import com.ensat.services.ProductService;
+
+import javax.validation.Valid;
+
 //import com.ensat.services.ReportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class CrudController {
@@ -69,6 +74,68 @@ public class CrudController {
 	public String listAllReports(Model model,@PathVariable Integer id) {
 		model.addAttribute("orderinfo", orderInfoService.getOrderInfoById(id));
 		return "report";
+	}
+	
+	@RequestMapping(value="/addCustomer", method = RequestMethod.GET)
+	public ModelAndView registerCustomer(){
+		ModelAndView modelAndView = new ModelAndView();
+		Customer customer = new Customer();
+		modelAndView.addObject("customer", customer);
+		modelAndView.setViewName("addCustomer");
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/addCustomer", method = RequestMethod.POST)
+	public ModelAndView createNewCustomer(@Valid Customer customer, BindingResult bindingResult) {
+		ModelAndView modelAndView = new ModelAndView();
+		Customer customerExists = customerService.findCustomerByEmail(customer.getEmail());
+		if (customerExists != null) {
+			bindingResult
+					.rejectValue("email", "error.customer",
+							"the customer is Already exist");
+		}
+		if (bindingResult.hasErrors()) {
+			modelAndView.setViewName("addCustomer");
+		} else {
+			customerService.saveCustomer(customer);
+			modelAndView.addObject("successMessage", "Customer has been Added");
+			modelAndView.addObject("redirectMessage", "Go to Customers page");
+			modelAndView.addObject("customer", new Customer());
+			modelAndView.setViewName("addCustomer");
+			
+		}
+		return modelAndView;
+	}
+	
+	
+	@RequestMapping(value="/addDriver", method = RequestMethod.GET)
+	public ModelAndView registerDriver(){
+		ModelAndView modelAndView = new ModelAndView();
+		Driver driver = new Driver();
+		modelAndView.addObject("driver", driver);
+		modelAndView.setViewName("addDriver");
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/addDriver", method = RequestMethod.POST)
+	public ModelAndView createNewDriver(@Valid Driver driver, BindingResult bindingResult) {
+		ModelAndView modelAndView = new ModelAndView();
+		Driver driverExists = driverService.findDriverByEmail(driver.getEmail());
+		if (driverExists != null) {
+			bindingResult
+					.rejectValue("email", "error.driver",
+							"the Driver is Already exist");
+		}
+		if (bindingResult.hasErrors()) {
+			modelAndView.setViewName("addDriver");
+		} else {
+			driverService.saveDriver(driver);
+			modelAndView.addObject("successMessage", "Driver has been Added");
+			modelAndView.addObject("driver", new Driver());
+			modelAndView.setViewName("addDriver");
+			
+		}
+		return modelAndView;
 	}
 
 	@RequestMapping(value = "/customers", method = RequestMethod.GET)
